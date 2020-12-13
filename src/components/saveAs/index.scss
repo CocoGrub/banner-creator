@@ -1,0 +1,21 @@
+.saveas-wrapper {
+  width: 320px;
+  margin-top: 100px;
+}
+.saveas-main {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #bce8ef;
+  &-element {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-bottom: 1em;
+  }
+  button {
+    border-radius: 10px;
+    border: 1px dotted gray;
+    height: 1.7em;
+    width: 100%;
+  }
+}
