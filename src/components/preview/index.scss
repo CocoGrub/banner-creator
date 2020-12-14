@@ -1,5 +1,6 @@
 .preview-component {
   border-radius: 15px;
+
   //   height: 90vh;
 
   //   width: 60vh;
@@ -10,6 +11,7 @@
 }
 
 .main-preview {
+  box-sizing: border-box;
   border-radius: 10px;
   width: inherit;
   height: inherit;
