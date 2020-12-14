@@ -1,5 +1,6 @@
 .form-wrapper {
   background-color: #bce8ef;
+  margin-bottom: 1em;
 }
 .form-main {
   display: flex;
@@ -20,7 +21,6 @@
   }
   &-text {
     width: 100%;
-
     text-align: center;
   }
   textarea {

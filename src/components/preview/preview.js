@@ -6,7 +6,7 @@ const Preview = () => {
       <div className="main-preview">
         <div className="main-preview-content">
           <div className="main-preview-header">
-            <h1>В профиле появились «Заказы»</h1>
+            <h2>В профиле появились «Заказы»</h2>
           </div>
           <div className="main-preview-parag">
             Aliquip occaecat velit ex mollit pariatur. Incididunt nisi commodo esse Lorem laboris.

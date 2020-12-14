@@ -1,9 +1,16 @@
 import React from 'react';
 
+const myHeader = (
+  <div className="myHeader">
+    <h1>Конструктор баннера</h1>
+  </div>
+);
+
 const Prep = () => {
   // prep = preparation
   return (
     <div className="prep-wrapper">
+      {myHeader}
       <div className="prep">
         <div className="prep-col">
           <button className="prep-element">Загрузить картинку из файла</button>
