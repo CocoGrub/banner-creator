@@ -6,13 +6,15 @@ import Prep from './components/prep/prep';
 function App() {
   return (
     <div className="App">
-      <div className="left-side">
-        <Prep />
-        <Form />
-      </div>
-      <div className="right-side">
-        <Preview />
-        <SaveAs />
+      <div className="app-wrapper">
+        <div className="left-side">
+          <Prep />
+          <Form />
+        </div>
+        <div className="right-side">
+          <Preview />
+          <SaveAs />
+        </div>
       </div>
     </div>
   );

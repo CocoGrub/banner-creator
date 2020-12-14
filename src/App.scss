@@ -1,11 +1,15 @@
 .App {
+  background-color: #aed6dc;
+  height: 100vh;
+}
+.app-wrapper {
   border-radius: 10px;
   margin: 0 auto;
-  margin-top: 3em;
+  padding-top: 5em;
   display: flex;
   justify-content: center;
-  background-color: #aed6dc;
 }
+
 .left-side {
   border: 1px solid rgb(129, 129, 129);
   border-radius: 10px;
