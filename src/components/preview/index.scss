@@ -1,6 +1,6 @@
 .preview-component {
   max-width: 320px;
-  height: 440px;
+  max-height: 480px;
 }
 
 .main-preview {
@@ -19,9 +19,10 @@
     padding-left: 1em;
     padding-right: 1em;
   }
-  &-preview-content {
+  &-content {
     align-self: flex-end;
   }
+
   &-header {
     display: flex;
     h1 {

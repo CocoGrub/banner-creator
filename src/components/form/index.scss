@@ -1,0 +1,35 @@
+.form-wrapper {
+  background-color: #bce8ef;
+}
+.form-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &-header {
+    width: 100%;
+    background-color: #aed6dc;
+    text-align: left;
+    font-weight: bold;
+    height: 2em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+
+    span {
+      margin-left: 1em;
+    }
+  }
+  &-text {
+    width: 100%;
+
+    text-align: center;
+  }
+  textarea {
+    resize: none;
+    outline: none;
+    width: 85%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 2em;
+  }
+}

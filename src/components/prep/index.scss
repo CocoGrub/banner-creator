@@ -1,0 +1,21 @@
+.prep-wrapper {
+  width: 360px;
+}
+.prep {
+  border-radius: 10px;
+  background-color: #bce8ef;
+  display: flex;
+  justify-content: space-around;
+  &-col {
+    display: flex;
+    flex-direction: column;
+  }
+  &-element {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+    width: 11em;
+    height: 3em;
+    border-radius: 10px;
+  }
+}
