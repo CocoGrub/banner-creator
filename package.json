@@ -1,5 +1,5 @@
 {
-  "name": "avito-banner",
+  "name": "banner-creator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,8 +9,13 @@
     "node-sass": "4.14.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
+    "react-color": "^2.19.3",
+    "react-color-gradient-picker": "^0.1.2",
     "react-dom": "^17.0.1",
+    "react-linear-gradient-picker": "^1.1.4",
+    "react-redux": "^7.2.2",
     "react-scripts": "4.0.1",
+    "redux": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

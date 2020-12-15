@@ -2,13 +2,13 @@ import './App.scss';
 import Preview from './components/preview/preview';
 import SaveAs from './components/saveAs/saveAs';
 import Form from './components/form/';
-import Prep from './components/prep/prep';
+import Background from './components/background/background';
 function App() {
   return (
     <div className="App">
       <div className="app-wrapper">
         <div className="left-side">
-          <Prep />
+          <Background />
           <Form />
         </div>
         <div className="right-side">
