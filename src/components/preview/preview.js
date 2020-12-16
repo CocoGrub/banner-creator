@@ -1,7 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
+
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from 'react-component-export-image';
+
 import { store } from '../../store/store';
+
+const ComponentToPrint = React.forwardRef((props, ref) => (
+  <div ref={ref}>
+    <div className="preview-component">
+      <div
+        style={{ padding: 0 }}
+        className="main-preview"
+        style={{ background: props.color, position: 'absolute', zIndex: 1 }}>
+        <div
+          className="main-preview-image"
+          style={{
+            backgroundImage: `url(${props.backgroundImage})`,
+            zIndex: 2,
+            position: 'absolute',
+            width: '100%',
+          }}>
+          <div className="main-preview-content">
+            <div className="main-preview-header">
+              <h2>{props.header}</h2>
+            </div>
+            <div className="main-preview-parag">{props.paragraph}</div>
+            {props.button ? (
+              <div className="main-preview-button">
+                <button>{props.button}</button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+));
+
 const Preview = () => {
   const globalState = useContext(store);
+  const componentRef = useRef();
 
   const { header, paragraph, button, backgroundImage, backgroundColor } = globalState.state;
   let color = '';
@@ -28,30 +69,41 @@ const Preview = () => {
   }
 
   return (
-    <div className="preview-component">
-      <div className="main-preview" style={{ background: color, position: 'absolute', zIndex: 1 }}>
-        <div
-          className="main-preview-image"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            zIndex: 2,
-            position: 'absolute',
-            width: '100%',
-          }}>
-          <div className="main-preview-content">
-            <div className="main-preview-header">
-              <h2>{header}</h2>
-            </div>
-            <div className="main-preview-parag">{paragraph}</div>
-            {button ? (
-              <div className="main-preview-button">
-                <button>{button}</button>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
+    <div>
+      <ComponentToPrint
+        ref={componentRef}
+        header={header}
+        color={color}
+        paragraph={paragraph}
+        button={button}
+        backgroundImage={backgroundImage}
+      />
+      <button onClick={() => exportComponentAsPNG(componentRef)}>Export As PNG</button>
     </div>
+    // <div className="preview-component">
+    //   <div className="main-preview" style={{ background: color, position: 'absolute', zIndex: 1 }}>
+    //     <div
+    //       className="main-preview-image"
+    //       style={{
+    //         backgroundImage: `url(${backgroundImage})`,
+    //         zIndex: 2,
+    //         position: 'absolute',
+    //         width: '100%',
+    //       }}>
+    //       <div className="main-preview-content">
+    //         <div className="main-preview-header">
+    //           <h2>{header}</h2>
+    //         </div>
+    //         <div className="main-preview-parag">{paragraph}</div>
+    //         {button ? (
+    //           <div className="main-preview-button">
+    //             <button>{button}</button>
+    //           </div>
+    //         ) : null}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 
