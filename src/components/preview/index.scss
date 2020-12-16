@@ -19,10 +19,24 @@
   background-color: rgb(196, 240, 171);
   display: flex;
   flex-direction: column-reverse;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 2em;
-
+  // padding-left: 1em;
+  // padding-right: 1em;
+  // padding-bottom: 2em;
+  &-image {
+    background-repeat: no-repeat;
+    background-position: top;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: inherit;
+    height: inherit;
+    // padding: calc(60vh * 0.06) calc(60vh * 0.064) calc(66vh * 0.13);
+    // background-color: rgb(196, 240, 171);
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 2em;
+  }
   &-content {
     display: flex;
     flex-direction: column;

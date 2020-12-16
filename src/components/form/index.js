@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { store } from '../../store/store';
 import { updateTextAC } from '../../store/actions';
 const Form = () => {
@@ -14,8 +14,11 @@ const Form = () => {
     setValue({
       [e.target.name]: e.target.value,
     });
-    dispatch(updateTextAC(value));
   };
+
+  useEffect(() => {
+    dispatch(updateTextAC(value));
+  }, [value, dispatch]);
   const { header, paragraph, button } = value;
   return (
     <div className="form-wrapper">

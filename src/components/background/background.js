@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { store } from '../../store/store';
+import { updateColorAC, updateImageAC } from '../../store/actions';
 import { SketchPicker } from 'react-color';
 import { GradientPickerPopover } from 'react-linear-gradient-picker';
 import 'react-color-gradient-picker/dist/index.css';
@@ -31,26 +32,42 @@ const myHeader = (
 );
 
 const Background = () => {
+  const globalState = useContext(store);
+  const { dispatch } = globalState;
+
+  const [background, setBackground] = useState('');
   const [open, setOpen] = useState(false);
   const [angle, setAngle] = useState(90);
   const [palette, setPalette] = useState(initialPallet);
-
   const [colorValue, setColorValue] = React.useState('#ffcfef');
 
   const setColorValueF = (e) => {
     setColorValue(e.target.value);
   };
 
-  const globalState = useContext(store);
-  const handleInput = (e) => {
-    setBackground({ ...background, backgroundImage: e.target.value });
+  const sumbitGrad = () => {
+    dispatch(updateColorAC({ palette, angle }));
   };
-  const [background, setBackground] = useState({
-    backgroundImage: '',
-    backgroundColor: '',
-  });
+  const sumbitColor = () => {
+    dispatch(updateColorAC(colorValue));
+  };
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(updateColorAC({ palette, angle }));
+  //     console.log('disp');
+  //   }, 1000);
+  // }, [palette, angle]);
+
+  useEffect(() => {
+    dispatch(updateImageAC(background));
+  }, [background]);
+
+  const handleInput = (e) => {
+    setBackground(e.target.value);
+  };
 
   const handleUpload = (e) => {
+    //загружаем картинку в стейт
     e.preventDefault();
     let file = e.target.files[0];
     let reader = new FileReader();
@@ -58,7 +75,7 @@ const Background = () => {
       return;
     }
     reader.onloadend = (e) => {
-      setBackground({ ...background, backgroundImage: [reader.result] });
+      setBackground([reader.result]);
     };
     reader.readAsDataURL(file);
   };
@@ -67,37 +84,34 @@ const Background = () => {
     <div className="prep-wrapper">
       {myHeader}
       <div className="prep">
-        <div className="prep-col">
-          <img src={background.backgroundImage} alt="" />
-          <input className="prep-element" type="file" name="file" onChange={handleUpload} />
-          <input type="text" name="url" onChange={handleInput} placeholder="ссылка на картинку" />
+        <input className="prep-element" type="file" name="file" onChange={handleUpload} />
+        <input type="text" name="url" onChange={handleInput} placeholder="ссылка на картинку" />
+        <div className="color-input">
+          <label htmlFor="color">Выберите цвет </label>
+          <input name="color" type="color" value={colorValue} onChange={setColorValueF} />
         </div>
-        <div className="prep-col">
-          <div>
-            <label htmlFor="color">Выберите цвет </label>
-            <br></br>
-            <input name="color" type="color" value={colorValue} onChange={setColorValueF} />
-          </div>
-          <div>
-            <label htmlFor="gradient">Выберите градиент </label>
-            <br></br>
-            <GradientPickerPopover
-              {...{
-                open,
-                setOpen,
-                angle,
-                setAngle,
-                showAnglePicker: true,
-                width: 220,
-                maxStops: 3,
-                paletteHeight: 32,
-                palette,
-                onPaletteChange: setPalette,
-              }}>
-              <WrappedSketchPicker />
-            </GradientPickerPopover>
-          </div>
+        <button onClick={sumbitColor}>подвердить</button>
+        <div className="gradient-wrapper color-input">
+          <label htmlFor="gradient">Выберите градиент </label>
+
+          <GradientPickerPopover
+            {...{
+              open,
+              setOpen,
+              angle,
+              setAngle,
+              showAnglePicker: true,
+              width: 220,
+              maxStops: 3,
+              paletteHeight: 32,
+              palette,
+              onPaletteChange: setPalette,
+            }}>
+            <WrappedSketchPicker />
+          </GradientPickerPopover>
         </div>
+
+        <button onClick={sumbitGrad}>подвердить</button>
       </div>
     </div>
   );

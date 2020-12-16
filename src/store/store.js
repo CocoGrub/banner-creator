@@ -15,8 +15,11 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, { type, payload }) => {
     switch (type) {
       case 'UPDATE_TEXT':
-        const newState = { ...state, ...payload };
-        return newState;
+        return { ...state, ...payload };
+      case 'UPDATE_COLOR':
+        return { ...state, backgroundColor: payload };
+      case 'UPDATE_IMAGE':
+        return { ...state, backgroundImage: payload };
       default:
         return state;
     }

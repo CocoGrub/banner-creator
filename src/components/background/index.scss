@@ -5,16 +5,13 @@
   text-align: center;
 }
 .prep {
+  box-sizing: border-box;
   margin-top: 2em;
   background-color: #bce8ef;
   display: flex;
   flex-direction: column;
-
-  align-items: center;
-  &-col {
-    display: flex;
-    flex-direction: column;
-  }
+  align-items: flex-start;
+  padding: 0.5em;
   &-element {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -29,4 +26,20 @@
   width: inherit;
   display: flex;
   flex-direction: row;
+}
+.color-input {
+  margin-top: 1em;
+  label {
+    margin-right: 1em;
+  }
+}
+.gradient-wrapper {
+  display: flex;
+  .gpw {
+    padding: 0 !important;
+  }
+}
+
+.popover {
+  background-color: white;
 }

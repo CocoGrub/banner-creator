@@ -4,3 +4,15 @@ export const updateTextAC = (payload) => {
     payload,
   };
 };
+export const updateColorAC = (payload) => {
+  return {
+    type: 'UPDATE_COLOR',
+    payload,
+  };
+};
+export const updateImageAC = (payload) => {
+  return {
+    type: 'UPDATE_IMAGE',
+    payload,
+  };
+};
