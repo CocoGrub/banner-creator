@@ -13,7 +13,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
             className="main-preview-image"
             style={{
               backgroundImage: `url(${props.backgroundImage})`,
-              backgroundPosition: props.position,
+              backgroundPosition: '50%' + props.position + '%',
             }}>
             <div className="main-preview-content">
               <div className="main-preview-header">

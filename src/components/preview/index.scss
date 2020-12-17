@@ -14,21 +14,22 @@
   flex-direction: column-reverse;
   position: absolute;
   z-index: 1;
+
   &-image {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 2em;
     background-size: contain;
     z-index: 2;
     position: absolute;
     background-repeat: no-repeat;
-    background-position: center;
+    // background-position: center;
     box-sizing: border-box;
     border-radius: 10px;
     width: inherit;
     height: inherit;
     display: flex;
     flex-direction: column-reverse;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-bottom: 2em;
   }
   &-content {
     display: flex;

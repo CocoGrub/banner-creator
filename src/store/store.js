@@ -14,7 +14,7 @@ const initialState = {
   },
   backgroundImage: '',
   backgroundColor: '',
-  position: 'top',
+  position: '100%',
 };
 const store = createContext(initialState);
 const { Provider } = store;

@@ -32,6 +32,8 @@ const BackgroundSetter = () => {
 
   const [background, setBackground] = useState('');
 
+  const [imagePositionY, setImagePositionY] = useState(100);
+
   const [open, setOpen] = useState(false);
   const [angle, setAngle] = useState(90);
   const [palette, setPalette] = useState(initialPallet);
@@ -55,6 +57,11 @@ const BackgroundSetter = () => {
     dispatch(updateImageAC(background));
   }, [background, dispatch]);
 
+  // диспатчим параметры слайдера
+  useEffect(() => {
+    dispatch(updateImagePositionAC(imagePositionY));
+  }, [imagePositionY, dispatch]);
+
   //загружаем картинку в стейт из ссылки
   const handleInput = (e) => {
     setBackground({ background: e.target.value, url: e.target.value });
@@ -77,9 +84,9 @@ const BackgroundSetter = () => {
     };
     reader.readAsDataURL(file);
   };
-
-  const applyImagePosionToStore = (x) => {
-    dispatch(updateImagePositionAC(x));
+  // остслеживаем изменения слайдера и сохраняем в сосотояние компонента
+  const handleSliderY = (e) => {
+    setImagePositionY(e.target.value);
   };
 
   return (
@@ -103,10 +110,15 @@ const BackgroundSetter = () => {
           placeholder="ссылка на картинку"
         />
         <div className="setImagePosition">
-          <p>Задать позицию изображения</p>
-          <button onClick={() => applyImagePosionToStore('top')}>TOP</button>
-          <button onClick={() => applyImagePosionToStore('center')}>CENTER</button>
-          <button onClick={() => applyImagePosionToStore('bottom')}>BOTTOM</button>
+          <p>Задать позицию изображения по высоте</p>
+          <input
+            value={imagePositionY}
+            type="range"
+            name="posY"
+            min="0"
+            max="100"
+            onChange={handleSliderY}></input>
+          <label htmlFor="volume">Позиция по Y</label>
         </div>
         <div className="color-input">
           <label htmlFor="color">Выберите цвет </label>
