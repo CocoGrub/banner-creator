@@ -17,7 +17,6 @@
   &-image {
     z-index: 2;
     position: absolute;
-    width: 100%;
     background-repeat: no-repeat;
     background-position: top;
     box-sizing: border-box;
@@ -40,13 +39,18 @@
   &-header {
     display: flex;
     h2 {
+      display: block;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      overflow: hidden;
+      max-height: 4.8em;
+      line-height: 1.6em;
       padding: 0;
       margin: 0;
       color: #111;
       font-size: calc(1vw + 1em);
-      line-height: calc(1vh + 1em);
+      // line-height: calc(1vh + 1em);
       font-weight: bold;
-      letter-spacing: -1px;
       align-self: flex-start;
     }
   }
