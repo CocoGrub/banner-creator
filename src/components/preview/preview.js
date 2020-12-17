@@ -13,6 +13,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
             className="main-preview-image"
             style={{
               backgroundImage: `url(${props.backgroundImage})`,
+              backgroundPosition: props.position,
             }}>
             <div className="main-preview-content">
               <div className="main-preview-header">
@@ -44,7 +45,14 @@ const Preview = () => {
   const globalState = useContext(store);
   const componentRef = useRef();
 
-  const { header, paragraph, button, backgroundImage, backgroundColor } = globalState.state;
+  const {
+    header,
+    paragraph,
+    button,
+    backgroundImage,
+    backgroundColor,
+    position,
+  } = globalState.state;
   let color = '';
   //проверяем бекграунд на градиент или цвет
   if (backgroundColor) {
@@ -78,6 +86,7 @@ const Preview = () => {
         paragraph={paragraph}
         button={button}
         backgroundImage={backgroundImage.background}
+        position={position}
         url={backgroundImage.url}
       />,
     );
@@ -96,6 +105,7 @@ const Preview = () => {
       <ComponentToPrint
         ref={componentRef}
         header={header}
+        position={position}
         color={color}
         paragraph={paragraph}
         button={button}

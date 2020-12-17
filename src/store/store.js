@@ -14,6 +14,7 @@ const initialState = {
   },
   backgroundImage: '',
   backgroundColor: '',
+  position: 'top',
 };
 const store = createContext(initialState);
 const { Provider } = store;
@@ -27,6 +28,8 @@ const AppProvider = ({ children }) => {
         return { ...state, backgroundColor: payload };
       case 'UPDATE_IMAGE':
         return { ...state, backgroundImage: payload };
+      case 'UPDATE_IMAGE_POSITION':
+        return { ...state, position: payload };
       default:
         return state;
     }

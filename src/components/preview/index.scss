@@ -15,10 +15,11 @@
   position: absolute;
   z-index: 1;
   &-image {
+    background-size: contain;
     z-index: 2;
     position: absolute;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
     box-sizing: border-box;
     border-radius: 10px;
     width: inherit;

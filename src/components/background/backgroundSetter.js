@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { store } from '../../store/store';
-import { updateColorAC, updateImageAC } from '../../store/actions';
+import { updateColorAC, updateImageAC, updateImagePositionAC } from '../../store/actions';
 import { SketchPicker } from 'react-color';
 import { GradientPickerPopover } from 'react-linear-gradient-picker';
 import 'react-color-gradient-picker/dist/index.css';
@@ -26,7 +26,7 @@ const initialPallet = [
   { offset: '1.00', color: 'rgb(126, 32, 207)' },
 ];
 
-const Background = () => {
+const BackgroundSetter = () => {
   const globalState = useContext(store);
   const { dispatch } = globalState;
 
@@ -78,13 +78,23 @@ const Background = () => {
     reader.readAsDataURL(file);
   };
 
+  const applyImagePosionToStore = (x) => {
+    dispatch(updateImagePositionAC(x));
+  };
+
   return (
     <div className="prep-wrapper">
       <div className="myHeader">
         <h1>Конструктор баннера</h1>
       </div>
       <div className="prep">
-        <input className="prep-element" type="file" name="file" onChange={handleUpload} />
+        <input
+          className="prep-element"
+          type="file"
+          accept="image/*"
+          name="file"
+          onChange={handleUpload}
+        />
         <input
           className="prep-element"
           type="text"
@@ -92,6 +102,12 @@ const Background = () => {
           onChange={handleInput}
           placeholder="ссылка на картинку"
         />
+        <div className="setImagePosition">
+          <p>Задать позицию изображения</p>
+          <button onClick={() => applyImagePosionToStore('top')}>TOP</button>
+          <button onClick={() => applyImagePosionToStore('center')}>CENTER</button>
+          <button onClick={() => applyImagePosionToStore('bottom')}>BOTTOM</button>
+        </div>
         <div className="color-input">
           <label htmlFor="color">Выберите цвет </label>
           {/* интегрируем стандартый HTML color пикер */}
@@ -125,4 +141,4 @@ const Background = () => {
   );
 };
 
-export default Background;
+export default BackgroundSetter;

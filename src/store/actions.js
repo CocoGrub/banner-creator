@@ -16,3 +16,9 @@ export const updateImageAC = (payload) => {
     payload,
   };
 };
+export const updateImagePositionAC = (payload) => {
+  return {
+    type: 'UPDATE_IMAGE_POSITION',
+    payload,
+  };
+};

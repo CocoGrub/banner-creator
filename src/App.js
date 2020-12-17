@@ -2,14 +2,14 @@ import './App.scss';
 import React from 'react';
 import Preview from './components/preview/preview';
 import Form from './components/form/';
-import Background from './components/background/background';
+import BackgroundSetter from './components/background/backgroundSetter';
 
 function App() {
   return (
     <div className="App">
       <div className="app-wrapper">
         <div className="input-conponents">
-          <Background />
+          <BackgroundSetter />
           <Form />
         </div>
         <div className="view-components">
