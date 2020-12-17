@@ -22,8 +22,9 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
               <div className="main-preview-parag" style={{ color: props.paragraph.color }}>
                 {props.paragraph.text}
               </div>
-              {props.button.text ? (
-                <div className="main-preview-button">
+
+              <div className="main-preview-button">
+                {props.button.text ? (
                   <button
                     style={{
                       backgroundColor: props.button.buttonColor,
@@ -31,8 +32,8 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                     }}>
                     {props.button.text}
                   </button>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
@@ -76,7 +77,7 @@ const Preview = () => {
     }
   }
 
-  //функция для сохранения разметки в буфер обмена
+  //функция для сохранения разметки в буфер обмена(костыль, найти решение получше)
   const saveHtml = () => {
     let html = ReactDOMServer.renderToString(
       <ComponentToPrint
@@ -116,7 +117,9 @@ const Preview = () => {
         <div className="saveas-main">
           <h2>Сохранить как...</h2>
           <div className="saveas-main-element">
-            <button onClick={saveHtml}>Скопировать HTML в буфер обмена</button>
+            <button className="custom-button" onClick={saveHtml}>
+              Скопировать HTML в буфер обмена
+            </button>
           </div>
           <div className="saveas-main-element">
             {/* сохраняем конфиг из стейта в JSON */}
@@ -125,11 +128,13 @@ const Preview = () => {
                 JSON.stringify(globalState),
               )}`}
               download="config.json">
-              <button>Загрузить конфиг как JSON</button>
+              <button className="custom-button">Загрузить конфиг как JSON</button>
             </a>
           </div>
           <div className="saveas-main-element">
-            <button onClick={() => exportComponentAsPNG(componentRef)}>Экспортировать в PNG</button>
+            <button className="custom-button" onClick={() => exportComponentAsPNG(componentRef)}>
+              Экспортировать в PNG
+            </button>
           </div>
         </div>
       </div>

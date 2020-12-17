@@ -125,8 +125,9 @@ const BackgroundSetter = () => {
           {/* интегрируем стандартый HTML color пикер */}
           <input name="color" type="color" value={colorValue} onChange={setColor} />
         </div>
-        <button onClick={sumbitColor}>подвердить</button>
-
+        <button className="custom-button" onClick={sumbitColor}>
+          подтвердить
+        </button>
         <div className="gradient-wrapper color-input">
           <label htmlFor="gradient">Выберите градиент </label>
           {/* итегрируем градиент пикер */}
@@ -147,7 +148,9 @@ const BackgroundSetter = () => {
           </GradientPickerPopover>
         </div>
 
-        <button onClick={sumbitGrad}>подвердить</button>
+        <button className="custom-button" onClick={sumbitGrad}>
+          подтвердить
+        </button>
       </div>
     </div>
   );
