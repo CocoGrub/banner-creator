@@ -5,7 +5,7 @@ import { store } from '../../store/store';
 
 // создаем ref на компонент для библиотеки, экспортирующей компонент как PNG
 const ComponentToPrint = React.forwardRef((props, ref) => (
-  <a href={props.url}>
+  <a href={props.url} target="_blank" rel="noopener noreferrer">
     <div className="preview-component" ref={ref}>
       <div className="main-preview" style={{ background: props.color }}>
         <div
@@ -15,12 +15,20 @@ const ComponentToPrint = React.forwardRef((props, ref) => (
           }}>
           <div className="main-preview-content">
             <div className="main-preview-header">
-              <h2>{props.header}</h2>
+              <h2 style={{ color: props.header.color }}>{props.header.text}</h2>
             </div>
-            <div className="main-preview-parag">{props.paragraph}</div>
-            {props.button ? (
+            <div className="main-preview-parag" style={{ color: props.paragraph.color }}>
+              {props.paragraph.text}
+            </div>
+            {props.button.text ? (
               <div className="main-preview-button">
-                <button>{props.button}</button>
+                <button
+                  style={{
+                    backgroundColor: props.button.buttonColor,
+                    color: props.button.color,
+                  }}>
+                  {props.button.text}
+                </button>
               </div>
             ) : null}
           </div>

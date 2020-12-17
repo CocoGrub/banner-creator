@@ -5,6 +5,7 @@ import { SketchPicker } from 'react-color';
 import { GradientPickerPopover } from 'react-linear-gradient-picker';
 import 'react-color-gradient-picker/dist/index.css';
 
+//необходимые операции для библиотеки градиента
 const rgbToRgba = (rgb, a = 1) => rgb.replace('rgb(', 'rgba(').replace(')', `, ${a})`);
 
 const WrappedSketchPicker = ({ onSelect, ...rest }) => {
@@ -30,32 +31,37 @@ const Background = () => {
   const { dispatch } = globalState;
 
   const [background, setBackground] = useState('');
+
   const [open, setOpen] = useState(false);
   const [angle, setAngle] = useState(90);
   const [palette, setPalette] = useState(initialPallet);
+
   const [colorValue, setColorValue] = React.useState('#ffcfef');
 
-  const setColorValueF = (e) => {
+  const setColor = (e) => {
     setColorValue(e.target.value);
   };
 
+  //градиент и цвет обновляем в глобальном стейте только после подтверждения, так как операция затратна
   const sumbitGrad = () => {
     dispatch(updateColorAC({ palette, angle }));
   };
+
   const sumbitColor = () => {
     dispatch(updateColorAC(colorValue));
   };
-
+  //при каждом измении стейта картинки диспатчим ее в стейт
   useEffect(() => {
     dispatch(updateImageAC(background));
-  }, [background]);
+  }, [background, dispatch]);
 
+  //загружаем картинку в стейт из ссылки
   const handleInput = (e) => {
     setBackground({ background: e.target.value, url: e.target.value });
   };
 
+  //загружаем картинку в стейт из файла
   const handleUpload = (e) => {
-    //загружаем картинку в стейт
     e.preventDefault();
     let file = e.target.files[0];
     let reader = new FileReader();
@@ -65,7 +71,8 @@ const Background = () => {
     reader.onloadend = (e) => {
       setBackground({
         background: [reader.result],
-        url: 'https://www.avito.ru/moskva',
+        //заглушка для картинки из файла
+        url: 'https://www.google.com/',
       });
     };
     reader.readAsDataURL(file);
@@ -81,12 +88,13 @@ const Background = () => {
         <input type="text" name="url" onChange={handleInput} placeholder="ссылка на картинку" />
         <div className="color-input">
           <label htmlFor="color">Выберите цвет </label>
-          <input name="color" type="color" value={colorValue} onChange={setColorValueF} />
+          {/* интегрируем стандартый HTML color пикер */}
+          <input name="color" type="color" value={colorValue} onChange={setColor} />
         </div>
         <button onClick={sumbitColor}>подвердить</button>
         <div className="gradient-wrapper color-input">
           <label htmlFor="gradient">Выберите градиент </label>
-
+          {/* итегрируем градиент пикер */}
           <GradientPickerPopover
             {...{
               open,
