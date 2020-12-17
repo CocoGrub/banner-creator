@@ -5,27 +5,29 @@ import { store } from '../../store/store';
 
 // создаем ref на компонент для библиотеки, экспортирующей компонент как PNG
 const ComponentToPrint = React.forwardRef((props, ref) => (
-  <div className="preview-component" ref={ref}>
-    <div className="main-preview" style={{ background: props.color }}>
-      <div
-        className="main-preview-image"
-        style={{
-          backgroundImage: `url(${props.backgroundImage})`,
-        }}>
-        <div className="main-preview-content">
-          <div className="main-preview-header">
-            <h2>{props.header}</h2>
-          </div>
-          <div className="main-preview-parag">{props.paragraph}</div>
-          {props.button ? (
-            <div className="main-preview-button">
-              <button>{props.button}</button>
+  <a href={props.url}>
+    <div className="preview-component" ref={ref}>
+      <div className="main-preview" style={{ background: props.color }}>
+        <div
+          className="main-preview-image"
+          style={{
+            backgroundImage: `url(${props.backgroundImage})`,
+          }}>
+          <div className="main-preview-content">
+            <div className="main-preview-header">
+              <h2>{props.header}</h2>
             </div>
-          ) : null}
+            <div className="main-preview-parag">{props.paragraph}</div>
+            {props.button ? (
+              <div className="main-preview-button">
+                <button>{props.button}</button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </a>
 ));
 
 const Preview = () => {
@@ -33,6 +35,7 @@ const Preview = () => {
   const componentRef = useRef();
 
   const { header, paragraph, button, backgroundImage, backgroundColor } = globalState.state;
+  console.log(backgroundImage.url);
   let color = '';
   //проверяем бекграунд на градиент или цвет
   if (backgroundColor) {
@@ -77,7 +80,8 @@ const Preview = () => {
         color={color}
         paragraph={paragraph}
         button={button}
-        backgroundImage={backgroundImage}
+        backgroundImage={backgroundImage.background}
+        url={backgroundImage.url}
       />
       <div className="saveas-wrapper">
         <div className="saveas-main">

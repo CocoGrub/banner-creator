@@ -19,6 +19,7 @@ const AppProvider = ({ children }) => {
       case 'UPDATE_COLOR':
         return { ...state, backgroundColor: payload };
       case 'UPDATE_IMAGE':
+        console.log(payload);
         return { ...state, backgroundImage: payload };
       default:
         return state;

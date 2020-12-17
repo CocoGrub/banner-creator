@@ -25,12 +25,6 @@ const initialPallet = [
   { offset: '1.00', color: 'rgb(126, 32, 207)' },
 ];
 
-const myHeader = (
-  <div className="myHeader">
-    <h1>Конструктор баннера</h1>
-  </div>
-);
-
 const Background = () => {
   const globalState = useContext(store);
   const { dispatch } = globalState;
@@ -51,19 +45,13 @@ const Background = () => {
   const sumbitColor = () => {
     dispatch(updateColorAC(colorValue));
   };
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(updateColorAC({ palette, angle }));
-  //     console.log('disp');
-  //   }, 1000);
-  // }, [palette, angle]);
 
   useEffect(() => {
     dispatch(updateImageAC(background));
   }, [background]);
 
   const handleInput = (e) => {
-    setBackground(e.target.value);
+    setBackground({ background: e.target.value, url: e.target.value });
   };
 
   const handleUpload = (e) => {
@@ -75,14 +63,19 @@ const Background = () => {
       return;
     }
     reader.onloadend = (e) => {
-      setBackground([reader.result]);
+      setBackground({
+        background: [reader.result],
+        url: 'https://www.avito.ru/moskva',
+      });
     };
     reader.readAsDataURL(file);
   };
 
   return (
     <div className="prep-wrapper">
-      {myHeader}
+      <div className="myHeader">
+        <h1>Конструктор баннера</h1>
+      </div>
       <div className="prep">
         <input className="prep-element" type="file" name="file" onChange={handleUpload} />
         <input type="text" name="url" onChange={handleInput} placeholder="ссылка на картинку" />
