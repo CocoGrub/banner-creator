@@ -1,13 +1,10 @@
 import './App.scss';
 import React from 'react';
 import Preview from './components/preview/preview';
-
 import Form from './components/form/';
 import Background from './components/background/background';
 
 function App() {
-  // <FancyButton ref={ref}>Click me!</FancyButton>;
-
   return (
     <div className="App">
       <div className="app-wrapper">
