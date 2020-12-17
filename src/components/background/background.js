@@ -85,13 +85,20 @@ const Background = () => {
       </div>
       <div className="prep">
         <input className="prep-element" type="file" name="file" onChange={handleUpload} />
-        <input type="text" name="url" onChange={handleInput} placeholder="ссылка на картинку" />
+        <input
+          className="prep-element"
+          type="text"
+          name="url"
+          onChange={handleInput}
+          placeholder="ссылка на картинку"
+        />
         <div className="color-input">
           <label htmlFor="color">Выберите цвет </label>
           {/* интегрируем стандартый HTML color пикер */}
           <input name="color" type="color" value={colorValue} onChange={setColor} />
         </div>
         <button onClick={sumbitColor}>подвердить</button>
+
         <div className="gradient-wrapper color-input">
           <label htmlFor="gradient">Выберите градиент </label>
           {/* итегрируем градиент пикер */}

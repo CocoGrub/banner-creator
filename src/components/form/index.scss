@@ -8,14 +8,17 @@
   align-items: center;
   justify-content: center;
   &-header {
+    display: flex;
     width: 100%;
     background-color: #aed6dc;
     text-align: left;
     font-weight: bold;
-    height: 2em;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-
     span {
+      margin-left: 1em;
+    }
+    label {
+      margin-right: 0.1em;
       margin-left: 1em;
     }
   }

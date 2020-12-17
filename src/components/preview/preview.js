@@ -4,46 +4,47 @@ import { exportComponentAsPNG } from 'react-component-export-image';
 import { store } from '../../store/store';
 
 // создаем ref на компонент для библиотеки, экспортирующей компонент как PNG
-const ComponentToPrint = React.forwardRef((props, ref) => (
-  <a href={props.url} target="_blank" rel="noopener noreferrer">
-    <div className="preview-component" ref={ref}>
-      <div className="main-preview" style={{ background: props.color }}>
-        <div
-          className="main-preview-image"
-          style={{
-            backgroundImage: `url(${props.backgroundImage})`,
-          }}>
-          <div className="main-preview-content">
-            <div className="main-preview-header">
-              <h2 style={{ color: props.header.color }}>{props.header.text}</h2>
-            </div>
-            <div className="main-preview-parag" style={{ color: props.paragraph.color }}>
-              {props.paragraph.text}
-            </div>
-            {props.button.text ? (
-              <div className="main-preview-button">
-                <button
-                  style={{
-                    backgroundColor: props.button.buttonColor,
-                    color: props.button.color,
-                  }}>
-                  {props.button.text}
-                </button>
+const ComponentToPrint = React.forwardRef((props, ref) => {
+  return (
+    <a href={props.url} target="_blank" rel="noopener noreferrer">
+      <div className="preview-component" ref={ref}>
+        <div className="main-preview" style={{ background: props.color }}>
+          <div
+            className="main-preview-image"
+            style={{
+              backgroundImage: `url(${props.backgroundImage})`,
+            }}>
+            <div className="main-preview-content">
+              <div className="main-preview-header">
+                <h2 style={{ color: props.header.color }}>{props.header.text}</h2>
               </div>
-            ) : null}
+              <div className="main-preview-parag" style={{ color: props.paragraph.color }}>
+                {props.paragraph.text}
+              </div>
+              {props.button.text ? (
+                <div className="main-preview-button">
+                  <button
+                    style={{
+                      backgroundColor: props.button.buttonColor,
+                      color: props.button.color,
+                    }}>
+                    {props.button.text}
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </a>
-));
+    </a>
+  );
+});
 
 const Preview = () => {
   const globalState = useContext(store);
   const componentRef = useRef();
 
   const { header, paragraph, button, backgroundImage, backgroundColor } = globalState.state;
-  console.log(backgroundImage.url);
   let color = '';
   //проверяем бекграунд на градиент или цвет
   if (backgroundColor) {
@@ -69,8 +70,18 @@ const Preview = () => {
 
   //функция для сохранения разметки в буфер обмена
   const saveHtml = () => {
-    let html = ReactDOMServer.renderToString(<ComponentToPrint />);
-    let inputHTML = document.createElement('input');
+    let html = ReactDOMServer.renderToString(
+      <ComponentToPrint
+        ref={componentRef}
+        header={header}
+        color={color}
+        paragraph={paragraph}
+        button={button}
+        backgroundImage={backgroundImage.background}
+        url={backgroundImage.url}
+      />,
+    );
+    const inputHTML = document.createElement('input');
     document.body.appendChild(inputHTML);
     inputHTML.setAttribute('id', 'inputHTML_id');
     document.getElementById('inputHTML_id').value = html;

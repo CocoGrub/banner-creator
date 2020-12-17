@@ -25,19 +25,18 @@ const Form = () => {
       [e.target.name]: { ...value[e.target.name], [variable]: e.target.value },
     });
   };
-
-  const saveTextPropertiesToState = (e) => {
-    e.preventDefault();
+  //при каждом изменении стейта, диспатчим их в глобальный стор
+  useEffect(() => {
     dispatch(updateTextAC(value));
-  };
+  }, [value, dispatch]);
 
   const { header, paragraph, button } = value;
   return (
     <div className="form-wrapper">
-      <form onSubmit={saveTextPropertiesToState}>
+      <form>
         <div className="form-main">
           <div className="form-main-header">
-            <span>Добавить заголовок</span>
+            <span>Заголовок</span>
             <label htmlFor="header">цвет </label>
             {/* интегрируем стандартый HTML color пикер */}
             <input
@@ -56,7 +55,7 @@ const Form = () => {
             />
           </div>
           <div className="form-main-header">
-            <span>Добавить текст</span>
+            <span>Параграф</span>
             <label htmlFor="paragraph">цвет </label>
             <input
               name="paragraph"
@@ -74,7 +73,7 @@ const Form = () => {
             />
           </div>
           <div className="form-main-header">
-            <span>Добавить кнопку</span>
+            <span>Кнопка</span>
             <label htmlFor="button">цвет </label>
             <input
               name="button"
@@ -82,7 +81,7 @@ const Form = () => {
               value={button.color}
               onChange={(e) => handleChange(e, 'color')}
             />
-            <label htmlFor="buttonColor">цвет </label>
+            <label htmlFor="buttonColor">цвет кнопки</label>
             <input
               name="button"
               type="color"
@@ -94,7 +93,6 @@ const Form = () => {
             <textarea name="button" value={button.text} onChange={(e) => handleChange(e, 'text')} />
           </div>
         </div>
-        <button type="submit">Подтвердить</button>
       </form>
     </div>
   );

@@ -2,9 +2,16 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-  header: '',
-  paragraph: '',
-  button: '',
+  header: {
+    text: '',
+    color: '#000000',
+  },
+  paragraph: { text: '', color: '#000000' },
+  button: {
+    text: '',
+    color: '#000000',
+    buttonColor: '#000000',
+  },
   backgroundImage: '',
   backgroundColor: '',
 };
@@ -19,7 +26,6 @@ const AppProvider = ({ children }) => {
       case 'UPDATE_COLOR':
         return { ...state, backgroundColor: payload };
       case 'UPDATE_IMAGE':
-        console.log(payload);
         return { ...state, backgroundImage: payload };
       default:
         return state;

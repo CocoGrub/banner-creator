@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.left-side {
+.input-conponents {
   border: 1px solid rgb(129, 129, 129);
   border-radius: 10px;
   margin-right: 1em;
@@ -18,9 +18,40 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.right-side {
+.view-components {
   border: 1px solid rgb(129, 129, 129);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+}
+
+//custom button
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  background-color: #bce8ef;
+  color: #1b262c;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+  text-align: center;
+  line-height: 1.1;
+  transition: 220ms all ease-in-out;
+  &:hover,
+  &:active {
+    background-color: scale-color(#bce8ef, $lightness: -20%);
+  }
+  &:focus {
+    outline-style: solid;
+    outline-color: transparent;
+    box-shadow: 0 0 0 4px scale-color(#bce8ef, $lightness: -40%);
+  }
+}
+a {
+  text-decoration: none;
 }

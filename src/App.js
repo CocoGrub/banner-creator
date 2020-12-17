@@ -11,11 +11,11 @@ function App() {
   return (
     <div className="App">
       <div className="app-wrapper">
-        <div className="left-side">
+        <div className="input-conponents">
           <Background />
           <Form />
         </div>
-        <div className="right-side">
+        <div className="view-components">
           <Preview />
         </div>
       </div>
