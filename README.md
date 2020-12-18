@@ -1,3 +1,5 @@
+#### посмотреть можно здесь: https://cocogrub.github.io/banner-creator/
+
 ## Banner-creator app
 
 - приложение по созданию баннера.
