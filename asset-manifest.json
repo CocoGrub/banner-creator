@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/banner-creator/static/css/main.077eb386.chunk.css",
+    "main.js": "/banner-creator/static/js/main.98a4f8fb.chunk.js",
+    "main.js.map": "/banner-creator/static/js/main.98a4f8fb.chunk.js.map",
+    "runtime-main.js": "/banner-creator/static/js/runtime-main.36292c6e.js",
+    "runtime-main.js.map": "/banner-creator/static/js/runtime-main.36292c6e.js.map",
+    "static/css/2.a57d6f27.chunk.css": "/banner-creator/static/css/2.a57d6f27.chunk.css",
+    "static/js/2.83287294.chunk.js": "/banner-creator/static/js/2.83287294.chunk.js",
+    "static/js/2.83287294.chunk.js.map": "/banner-creator/static/js/2.83287294.chunk.js.map",
+    "index.html": "/banner-creator/index.html",
+    "static/css/2.a57d6f27.chunk.css.map": "/banner-creator/static/css/2.a57d6f27.chunk.css.map",
+    "static/css/main.077eb386.chunk.css.map": "/banner-creator/static/css/main.077eb386.chunk.css.map",
+    "static/js/2.83287294.chunk.js.LICENSE.txt": "/banner-creator/static/js/2.83287294.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/banner-creator/static/media/alpha-background.60df8847.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36292c6e.js",
+    "static/css/2.a57d6f27.chunk.css",
+    "static/js/2.83287294.chunk.js",
+    "static/css/main.077eb386.chunk.css",
+    "static/js/main.98a4f8fb.chunk.js"
+  ]
+}
