@@ -77,9 +77,21 @@ const Preview = () => {
     }
   }
 
-  //функция для сохранения разметки в буфер обмена(костыль, найти решение получше)
+  //Вынесем дубликат кода в отдельную функцию
+  const saveAnything = (x, y) => {
+    const inputHTML = document.createElement('input');
+    document.body.appendChild(inputHTML);
+    inputHTML.setAttribute('id', 'inputHTML_id');
+    document.getElementById('inputHTML_id').value = x;
+    inputHTML.select();
+    document.execCommand('copy');
+    document.body.removeChild(inputHTML);
+    alert(`${y} скопирован в буфер обмена`);
+  };
+
+  //функция для сохранения разметки в буфер обмена(костыль,надо найти решение получше)
   const saveHtml = () => {
-    let html = ReactDOMServer.renderToString(
+    const html = ReactDOMServer.renderToString(
       <ComponentToPrint
         ref={componentRef}
         header={header}
@@ -91,16 +103,13 @@ const Preview = () => {
         url={backgroundImage.url}
       />,
     );
-    const inputHTML = document.createElement('input');
-    document.body.appendChild(inputHTML);
-    inputHTML.setAttribute('id', 'inputHTML_id');
-    document.getElementById('inputHTML_id').value = html;
-    inputHTML.select();
-    document.execCommand('copy');
-    document.body.removeChild(inputHTML);
-    alert('HTML скопирован в буфер обмена');
+    saveAnything(html, 'HTML');
   };
 
+  const SaveJSON = () => {
+    const html = JSON.stringify(globalState);
+    saveAnything(html, 'JSON');
+  };
   return (
     <>
       <ComponentToPrint
@@ -123,13 +132,10 @@ const Preview = () => {
           </div>
           <div className="saveas-main-element">
             {/* сохраняем конфиг из стейта в JSON */}
-            <a
-              href={`data:text/json;charset=utf-8,${encodeURIComponent(
-                JSON.stringify(globalState),
-              )}`}
-              download="config.json">
-              <button className="custom-button">Загрузить конфиг как JSON</button>
-            </a>
+
+            <button className="custom-button" onClick={() => SaveJSON()}>
+              Скопировать JSON в буфер обмена
+            </button>
           </div>
           <div className="saveas-main-element">
             <button className="custom-button" onClick={() => exportComponentAsPNG(componentRef)}>
