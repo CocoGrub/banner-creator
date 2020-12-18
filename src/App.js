@@ -1,8 +1,8 @@
 import './App.scss';
 import React from 'react';
-import Preview from './components/preview/preview';
+import Preview from './components/preview/';
 import Form from './components/form/';
-import BackgroundSetter from './components/background/backgroundSetter';
+import BackgroundSetter from './components/backgroundSetter';
 
 function App() {
   return (
